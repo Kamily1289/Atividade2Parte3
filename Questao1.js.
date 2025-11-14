@@ -16,10 +16,21 @@ const produtosJSON = `{
         }
     ]
 }`;
-function formatarProditos(json) {
-    const precoFormatado =[];
 
-    for (const intem of json.inten){
-        const precoFormatado = intem    
+function a(b) {
+
+    // Converter string JSON em objeto
+    b = JSON.parse(b);
+    let listaFormatada = [];
+
+    for (let item of b.itens) {
+        
+        let texto = `${item.nome} - ${item.preco} (CATEGORIA: ${item.categoria})`;
+
+        listaFormatada.push(texto);
     }
+
+    return listaFormatada;
 }
+
+a(produtosJSON);
