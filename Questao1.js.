@@ -17,20 +17,25 @@ const produtosJSON = `{
     ]
 }`;
 
-function a(b) {
+// Função renomeada para um nome mais descritivo
+function cntProdutos(jsonString) {
 
     // Converter string JSON em objeto
-    b = JSON.parse(b);
-    let listaFormatada = [];
+    const a = JSON.parse(jsonString);
+    let listacnt = [];
 
-    for (let item of b.itens) {
+    // Iterar sobre a lista de itens dentro do objeto 'itens'
+    for (const item of a.itens) {
         
-        let texto = `${item.nome} - ${item.preco} (CATEGORIA: ${item.categoria})`;
 
-        listaFormatada.push(texto);
+        const precoFormatado = item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        let texto = `${item.nome} - ${precoFormatado} (CATEGORIA: ${item.categoria})`;
+
+        listacnt.push(texto);
     }
 
-    return listaFormatada;
+    return listacnt;
 }
 
-a(produtosJSON);
+console.log(cntProdutos(produtosJSON));
